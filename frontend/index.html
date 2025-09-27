@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload Form</title>
+</head>
+<body>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <div>
+            <label for="emailText">Texto do email:</label>
+            <input type="text" id="emailText" name="emailText">
+        </div>
+        <div>
+            <label for="emailFile">Arquivo (.txt ou .pdf)</label>
+            <input type="file" id="emailFile" name="file">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
