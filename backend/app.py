@@ -13,12 +13,6 @@ def serve_frontend():
 def verify_email():
     msg = ""
     
-    # Response dict
-    response = {
-        "response": msg,
-        "status": 200  # Default successful status code
-    }
-
     if request.files:
         msg = "File included"
         uploaded_file = request.files['file']  # 'file' is the name of the input field that receives the file in the frontend portion.
@@ -31,6 +25,12 @@ def verify_email():
 
     else:
         msg = "No files or form included"
+
+    # Response dict
+    response = {
+        "response": msg,
+        "status": 200  # Default successful status code
+    }
 
     # Return JSON response and respective status code
     return jsonify(response), response["status"]
