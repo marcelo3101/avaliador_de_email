@@ -7,6 +7,7 @@ import chardet
 
 # Local Imports
 from utils.files import *
+from utils.models import classify_email_text, generate_response
 
 # Configuring static folder to serve the frontend files
 app = Flask(__name__, static_folder='../frontend', static_url_path='/')
@@ -50,23 +51,23 @@ def verify_email():
                 "error": "Invalid file extension"
             }), 400
 
-        return jsonify({
-            "response": msg,
-            "status": 200,
-            "file_text_text": text
-        }), 200
-
     elif request.form:
         msg = "Form included"
+        text = request.form.get("emailText")
 
     else:
-        msg = "No files or form included"
+        return jsonify({
+            "error": "No data provided",
+            "status": 400
+        }), 400
+    
+    # Classify received text and generate response for it
+    classification = classify_email_text(text)
+    response_sugestion = generate_response(text)
 
-    # Response dict
-    response = {
-        "response": msg,
-        "status": 200  # Default successful status code
-    }
-
-    # Return JSON response and respective status code
-    return jsonify(response), response["status"]
+    # Return classification and suggested response
+    return jsonify({
+        "classification": classification,
+        "response_sugestion": response_sugestion,
+        "status": 200
+    }), 200
