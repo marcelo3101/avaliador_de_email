@@ -30,7 +30,7 @@ generator = pipeline("text2text-generation", model=generator_model, tokenizer=ge
 
 def generate_response(email_text: str):
     #prompt = f"Escreva uma resposta para o seguinte email: '{email_text}'" 
-    prompt = f"Write a complete and professional answer for the following email in Portuguese: '{email_text}'"
+    prompt = f"Write a polite answer for the following email: '{email_text}'"
 
     generated_response = generator(prompt, num_beams=5)
 
@@ -51,7 +51,8 @@ templates_productive = {
 
 # Exemplos de respostas para emails improdutivos
 templates_unproductive = {
-    "feliz": "Muito obrigado! Desejamos também a você ótimas festas e um excelente ano novo!",
+    "natal": "Muito obrigado! Desejamos também a você ótimas festas e um excelente ano novo!",
+    "aniversário": "Muito obrigado pela lembrança!",
     "obrigado": "Agradecemos pela mensagem! Estamos sempre à disposição.",
     "parabéns": "Muito obrigado pelo reconhecimento! Isso nos motiva a continuar melhorando.",
     "sucesso": "Agradecemos os votos de sucesso! Continuamos à disposição.",
