@@ -19,10 +19,12 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Upload successful:', data);
-            })
-            .catch(error => {
-                console.error('Error uploading file:', error);
+            document.getElementById("emailClassification").textContent = data.classification;
+            document.getElementById("aiSuggestion").textContent = data.response_suggestion;
+            document.getElementById("templateSuggestion").textContent = data.template_suggestion;
+        })
+        .catch(error => {
+            console.error('Error uploading file:', error);
         });
     }
 });
