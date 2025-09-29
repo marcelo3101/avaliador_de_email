@@ -20,7 +20,7 @@ def classify_email_text(email_text: str):
     result = classifier(email_text)[0]
     
     # Check label and return classification
-    return "Produtivo" if result["label"] == "LABEL_1" else "Improdutivo"
+    return ("Produtivo", 1) if result["label"] == "LABEL_1" else ("Improdutivo", 0)
 
 # Response generation model declaration and function
 generator_model_path = dirpath + "/flan-t5-small"
@@ -72,3 +72,6 @@ def generate_response_from_template(email_category: bool, email_text: str):
         for key, template in templates_unproductive.items():
             if key in text:
                 return template
+
+    # Generic template in case no keywords are found
+    return "Agradecemos pela mensagem! Seu email foi recebido e nossa equipe entrará em contato em breve."

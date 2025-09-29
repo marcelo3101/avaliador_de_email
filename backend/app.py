@@ -62,12 +62,14 @@ def verify_email():
         }), 400
     
     # Classify received text and generate response for it
-    classification = classify_email_text(text)
-    response_sugestion = generate_response(text)
+    classification = classify_email_text(text)  # Returns tuple (str, int) to make it easier for the template function.
+    response_suggestion = generate_response(text)
+    template_response_suggestion = generate_response_from_template(classification[1], text)
 
     # Return classification and suggested response
     return jsonify({
-        "classification": classification,
-        "response_sugestion": response_sugestion,
+        "classification": classification[0],
+        "response_suggestion": response_suggestion,
+        "template_suggestion": template_response_suggestion,
         "status": 200
     }), 200
