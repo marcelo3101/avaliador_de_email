@@ -27,15 +27,11 @@ def verify_email():
         # uploaded_file.stream.read()
         print(uploaded_file.filename)
         if check_file_extension(uploaded_file.filename):
-            print("Arquivo válido recebido!")
-            
             # Handling the file types
             if (uploaded_file.mimetype == "text/plain" or uploaded_file.mimetype == "message/rfc822"):  # Text files
-                print("text file")
                 # Read all contents
                 raw_content = uploaded_file.stream.read()
                 encoding = chardet.detect(raw_content)["encoding"]
-                print(f"Encoding {encoding}")
                 text = raw_content.decode(encoding)
             
             elif (uploaded_file.mimetype == "application/pdf"):
