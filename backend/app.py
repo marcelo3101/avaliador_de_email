@@ -7,7 +7,7 @@ import chardet
 
 # Local Imports
 from utils.files import *
-from utils.models import classify_email_text, generate_response
+from utils.models import classify_email_text, generate_response, generate_response_from_template
 
 # Configuring static folder to serve the frontend files
 app = Flask(__name__, static_folder='../frontend', static_url_path='/')
