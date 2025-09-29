@@ -53,7 +53,7 @@ def verify_email():
 
     elif request.form:
         msg = "Form included"
-        text = request.form.get("emailText")
+        text = request.form.get("text")
 
     else:
         return jsonify({
