@@ -57,7 +57,7 @@ mv email_classifier_hf avaiador_de_email/backend/utils
 
 ### Rodando a Aplicação
 
-Com as configurações feitas, vá para o diretŕio `backend` e rode
+Com as configurações feitas, vá para o diretório `backend` e rode
 ```
  flask --app app run
 ```
