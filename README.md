@@ -41,18 +41,20 @@ export GEMINI_API_KEY="<YOUR_API_KEY>"
 
 **Modelo Classificador**
 
-Os arquivos do modelo classificador de emails devem ser colocados dentro da pasta `backend/utils/email_classifier_hf`.
+Devido ao limite no tamanho de arquivos suportados (100MB) não é possível adicionar os arquivos do modelo classificador (256MB) ao repositório do GitHub.
 
-Ele pode ser obtido através desse [link de download](https://drive.google.com/file/d/1B9hfwCrQpYUdP_c_aQVXDS6HV6jTWCE1/view?usp=sharing) ou rodando o arquivo .ipynb no Google Colab ou similar.
+Os arquivos do modelo classificador de emails devem ser colocados dentro da pasta `backend/utils/` em uma pasta chamada `email_classifier_hf`.
+
+O modelo treinado e pronto para uso pode ser obtido através desse [link de download](https://drive.google.com/file/d/1B9hfwCrQpYUdP_c_aQVXDS6HV6jTWCE1/view?usp=sharing) ou pode ser treinado e baixado usando o arquivo .ipynb no Google Colab (Nessecita de uma chave de acesso ao hugging face, instruções estão no notebook).
 
 Para extrair os arquivos
 ```
 unzip email_classifier_hf.zip
 ```
 
-Mova a pasta para `avaiador_de_email/backend/utils`
+Mova a pasta para `avaliador_de_email/backend/utils`
 ```
-mv email_classifier_hf avaiador_de_email/backend/utils
+mv email_classifier_hf avaliador_de_email/backend/utils
 ```
 
 ### Rodando a Aplicação
