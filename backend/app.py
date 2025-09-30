@@ -6,8 +6,8 @@ from pypdf import PdfReader
 import chardet
 
 # Local Imports
-from utils.files import *
-from utils.models import classify_and_generate_response, generate_response_from_template
+from backend.utils.files import *
+from backend.utils.models import classify_and_generate_response, generate_response_from_template
 
 # Configuring static folder to serve the frontend files
 app = Flask(__name__, static_folder='../frontend', static_url_path='/')
