@@ -2,7 +2,6 @@
     Functions for using the AI models
 """
 
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, AutoModelForSeq2SeqLM, pipeline
 from google import genai
 
 import os
