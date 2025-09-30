@@ -28,6 +28,7 @@ pip install -r requirements.txt
 ```
 
 **Chave da API do Gemini**
+
 Caso nessesário, crie uma chave para usar a API do Gemini (Free tier). Ela será necessária para a geração de sugestão de respostas (exceto por template).
 
 [Gemini API Documentation - API Keys](https://ai.google.dev/gemini-api/docs/api-key)
@@ -39,6 +40,7 @@ export GEMINI_API_KEY="<YOUR_API_KEY>"
 ```
 
 **Modelo Classificador**
+
 Os arquivos do modelo classificador de emails devem ser colocados dentro da pasta `backend/utils/email_classifier_hf`.
 
 Ele pode ser obtido através desse [link de download](https://drive.google.com/file/d/1B9hfwCrQpYUdP_c_aQVXDS6HV6jTWCE1/view?usp=sharing) ou rodando o arquivo .ipynb no Google Colab ou similar.
@@ -54,6 +56,7 @@ mv email_classifier_hf avaiador_de_email/backend/utils
 ```
 
 **Rodando a Aplicação**
+
 Com as configurações feitas, vá para o diretŕio `backend` e rode
 ```
  flask --app app run
