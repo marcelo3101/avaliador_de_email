@@ -29,7 +29,7 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
             document.getElementById("templateSuggestion").textContent = data.template_suggestion;
 
             // Clear email file input
-
+            emailFile.value = null;
 
             overlay.style.display = "none";
             document.getElementById("results").hidden = false;  // Display results
