@@ -3,8 +3,9 @@
 """
 
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, AutoModelForSeq2SeqLM, pipeline
+from google import genai
+
 import os
-from typing import List, Dict
 
 # Get absolute path for model instantiation
 path = os.path.abspath(__file__)
@@ -22,20 +23,38 @@ def classify_email_text(email_text: str):
     # Check label and return classification
     return ("Produtivo", 1) if result["label"] == "LABEL_1" else ("Improdutivo", 0)
 
-# Response generation model declaration and function
+""" # Response generation model declaration and function
 generator_model_path = dirpath + "/flan-t5-small"
 generator_tokenizer = AutoTokenizer.from_pretrained(generator_model_path)
 generator_model = AutoModelForSeq2SeqLM.from_pretrained(generator_model_path)
-generator = pipeline("text2text-generation", model=generator_model, tokenizer=generator_tokenizer)
+generator = pipeline("text2text-generation", model=generator_model, tokenizer=generator_tokenizer) """
+
+
+# def generate_response(email_text: str):
+#     #prompt = f"Escreva uma resposta para o seguinte email: '{email_text}'" 
+#     prompt = f"Write a polite answer for the following email: '{email_text}'"
+# 
+#     generated_response = generator(prompt, num_beams=5)
+# 
+#     return generated_response[0]["generated_text"]
+
+# Using Gemini API
+# The client gets the API key from the environment variable `GEMINI_API_KEY`
+client = genai.Client()
 
 def generate_response(email_text: str):
     #prompt = f"Escreva uma resposta para o seguinte email: '{email_text}'" 
-    prompt = f"Write a polite answer for the following email: '{email_text}'"
+    prompt = f"""
+        Escreva uma resposta profissional e educada para o seguinte email: '{email_text}'
+        Na sua resposta retorne apenas o texto da resposta gerada.
+    """
 
-    generated_response = generator(prompt, num_beams=5)
+    # Using Gemini 2.5 Flash-Lite because of its higher request per day rate
+    generated_response = client.models.generate_content(
+        model="gemini-2.5-flash-lite", contents=prompt
+    )
 
-    return generated_response[0]["generated_text"]
-
+    return generated_response.text
 
 templates_productive = {
     "relatório": "Olá! Recebemos sua solicitação do relatório. Segue em anexo ou iremos providenciar o quanto antes.",
