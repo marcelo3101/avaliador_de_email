@@ -55,7 +55,7 @@ Mova a pasta para `avaiador_de_email/backend/utils`
 mv email_classifier_hf avaiador_de_email/backend/utils
 ```
 
-**Rodando a Aplicação**
+### Rodando a Aplicação
 
 Com as configurações feitas, vá para o diretŕio `backend` e rode
 ```
