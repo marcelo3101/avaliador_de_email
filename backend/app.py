@@ -7,7 +7,7 @@ import chardet
 
 # Local Imports
 from utils.files import *
-from utils.models import classify_email_text, generate_response, generate_response_from_template
+from utils.models import classify_and_generate_response, generate_response_from_template
 
 # Configuring static folder to serve the frontend files
 app = Flask(__name__, static_folder='../frontend', static_url_path='/')
@@ -19,13 +19,9 @@ def serve_frontend():
 
 @app.route("/verify_email", methods=["POST"])
 def verify_email():
-    msg = ""
-
     if request.files:
-        msg = "File included"
         uploaded_file = request.files['file']  # 'file' is the name of the input field that receives the file in the frontend portion.
-        # uploaded_file.stream.read()
-        print(uploaded_file.filename)
+
         if check_file_extension(uploaded_file.filename):
             # Handling the file types
             if (uploaded_file.mimetype == "text/plain" or uploaded_file.mimetype == "message/rfc822"):  # Text files
@@ -48,7 +44,6 @@ def verify_email():
             }), 400
 
     elif request.form:
-        msg = "Form included"
         text = request.form.get("text")
 
     else:
@@ -58,13 +53,15 @@ def verify_email():
         }), 400
     
     # Classify received text and generate response for it
-    classification = classify_email_text(text)  # Returns tuple (str, int) to make it easier for the template function.
-    response_suggestion = generate_response(text)
-    template_response_suggestion = generate_response_from_template(classification[1], text)
+    response = classify_and_generate_response(text).split("&&", 1)
+    classification = response[0]
+    response_suggestion = response[1]
+    bool_classification = True if classification == "Produtivo" else False
+    template_response_suggestion = generate_response_from_template(bool_classification, text)
 
     # Return classification and suggested response
     return jsonify({
-        "classification": classification[0],
+        "classification": classification,
         "response_suggestion": response_suggestion,
         "template_suggestion": template_response_suggestion,
         "status": 200
