@@ -52,7 +52,7 @@ Devido ao limite no tamanho de arquivos suportados (100MB) não é possível adi
 
 Os arquivos do modelo classificador de emails devem ser colocados dentro da pasta `backend/utils/` em uma pasta chamada `email_classifier_hf`.
 
-O modelo treinado e pronto para uso pode ser obtido através desse [link de download](https://drive.google.com/file/d/1B9hfwCrQpYUdP_c_aQVXDS6HV6jTWCE1/view?usp=sharing) ou pode ser treinado e baixado usando o arquivo .ipynb no Google Colab (Nessecita de uma chave de acesso ao hugging face, instruções estão no notebook).
+O modelo treinado e pronto para uso pode ser obtido através desse [link de download](https://drive.google.com/file/d/1B9hfwCrQpYUdP_c_aQVXDS6HV6jTWCE1/view?usp=sharing) ou pode ser treinado e baixado usando o arquivo .ipynb no Google Colab (Necessita de uma chave de acesso ao hugging face, instruções estão no notebook).
 
 Para extrair os arquivos
 ```
