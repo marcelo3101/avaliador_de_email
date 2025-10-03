@@ -1,6 +1,13 @@
 # Classificador de Emails
 
-## Instruções para rodar o projeto
+Link para a aplicação: https://avaliador-de-email.vercel.app/ 
+
+## Versão em deploy
+A versão encontrada na branch deploy não utiliza o modelo classificador localmente, mas também realiza o pedido de classificação para a API do Gemini. Isso ocorreu devido ao tamanho do modelo treinado ser de 256MB, o que dificultava o deploy nas plataformas mais comuns. O prompt pede ao LLM que retorne a resposta no formato `<Classificação>&&<RespostaSugerida>`. Assim, um `split("&&",1)` pode ser realizado na resposta para retornar ao front os valores esperados.
+
+## Instruções para rodar o projeto localmente (Modelo Classificador Local)
+
+Obs: Para rodar a versão da branch deploy localmente, basta ignorar os passos da seção Modelo Classificador.
 
 ### Configurações Iniciais
 
@@ -45,7 +52,7 @@ Devido ao limite no tamanho de arquivos suportados (100MB) não é possível adi
 
 Os arquivos do modelo classificador de emails devem ser colocados dentro da pasta `backend/utils/` em uma pasta chamada `email_classifier_hf`.
 
-O modelo treinado e pronto para uso pode ser obtido através desse [link de download](https://drive.google.com/file/d/1B9hfwCrQpYUdP_c_aQVXDS6HV6jTWCE1/view?usp=sharing) ou pode ser treinado e baixado usando o arquivo .ipynb no Google Colab (Nessecita de uma chave de acesso ao hugging face, instruções estão no notebook).
+O modelo treinado e pronto para uso pode ser obtido através desse [link de download](https://drive.google.com/file/d/1B9hfwCrQpYUdP_c_aQVXDS6HV6jTWCE1/view?usp=sharing) ou pode ser treinado e baixado usando o arquivo .ipynb no Google Colab (Necessita de uma chave de acesso ao hugging face, instruções estão no notebook).
 
 Para extrair os arquivos
 ```
